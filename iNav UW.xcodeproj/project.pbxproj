@@ -7,12 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1114CC342190E83F00770437 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1114CC322190E83F00770437 /* Search.storyboard */; };
+		1114CC372190E87200770437 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1114CC362190E87200770437 /* SearchViewController.swift */; };
+		1114CC3E21915E7000770437 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1114CC3D21915E7000770437 /* SearchTableViewCell.swift */; };
+		11818E412192A27C00DA1AA2 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11818E402192A27C00DA1AA2 /* ApiKeys.swift */; };
 		119E731C218CDCED00A8B800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E731B218CDCED00A8B800 /* AppDelegate.swift */; };
-		119E731E218CDCED00A8B800 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E731D218CDCED00A8B800 /* ViewController.swift */; };
+		119E731E218CDCED00A8B800 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E731D218CDCED00A8B800 /* MainViewController.swift */; };
 		119E7321218CDCED00A8B800 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 119E731F218CDCED00A8B800 /* Main.storyboard */; };
 		119E7323218CDCEE00A8B800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 119E7322218CDCEE00A8B800 /* Assets.xcassets */; };
 		119E7326218CDCEE00A8B800 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 119E7324218CDCEE00A8B800 /* LaunchScreen.storyboard */; };
 		119E7331218CDCEE00A8B800 /* iNav_UWTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E7330218CDCEE00A8B800 /* iNav_UWTests.swift */; };
+		119E733E218CED9900A8B800 /* CAE-2.svg in Resources */ = {isa = PBXBuildFile; fileRef = 119E733D218CED9900A8B800 /* CAE-2.svg */; };
+		119E7347218CF73A00A8B800 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E7346218CF73A00A8B800 /* DesignableView.swift */; };
+		119E7349218D05A300A8B800 /* UIViewController+BlurEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E7348218D05A300A8B800 /* UIViewController+BlurEffects.swift */; };
+		119E734B218D083C00A8B800 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E734A218D083C00A8B800 /* Constants.swift */; };
+		119E734D218D0D1500A8B800 /* POICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E734C218D0D1500A8B800 /* POICollectionViewCell.swift */; };
+		B55F4B4BD77D6E65162E036E /* Pods_iNav_UW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 314A89AEABAD48A8BA38438B /* Pods_iNav_UW.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,9 +36,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0CADD5EF709001E1B41DE019 /* Pods-iNav UW.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNav UW.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iNav UW/Pods-iNav UW.debug.xcconfig"; sourceTree = "<group>"; };
+		1114CC332190E83F00770437 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "iNav UW/Main Page/Base.lproj/Search.storyboard"; sourceTree = "<group>"; };
+		1114CC362190E87200770437 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		1114CC3D21915E7000770437 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		11818E402192A27C00DA1AA2 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		119E7318218CDCED00A8B800 /* iNav UW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iNav UW.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		119E731B218CDCED00A8B800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		119E731D218CDCED00A8B800 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		119E731D218CDCED00A8B800 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		119E7320218CDCED00A8B800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		119E7322218CDCEE00A8B800 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		119E7325218CDCEE00A8B800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +51,13 @@
 		119E732C218CDCEE00A8B800 /* iNav UWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iNav UWTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		119E7330218CDCEE00A8B800 /* iNav_UWTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iNav_UWTests.swift; sourceTree = "<group>"; };
 		119E7332218CDCEE00A8B800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		119E733D218CED9900A8B800 /* CAE-2.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CAE-2.svg"; sourceTree = "<group>"; };
+		119E7346218CF73A00A8B800 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
+		119E7348218D05A300A8B800 /* UIViewController+BlurEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+BlurEffects.swift"; sourceTree = "<group>"; };
+		119E734A218D083C00A8B800 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		119E734C218D0D1500A8B800 /* POICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POICollectionViewCell.swift; sourceTree = "<group>"; };
+		314A89AEABAD48A8BA38438B /* Pods_iNav_UW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iNav_UW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACED9B12996FF554B9B71903 /* Pods-iNav UW.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNav UW.release.xcconfig"; path = "Pods/Target Support Files/Pods-iNav UW/Pods-iNav UW.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55F4B4BD77D6E65162E036E /* Pods_iNav_UW.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +79,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FAA1D4FE2C8E459D0A39A39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0CADD5EF709001E1B41DE019 /* Pods-iNav UW.debug.xcconfig */,
+				ACED9B12996FF554B9B71903 /* Pods-iNav UW.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1114CC352190E84900770437 /* Search Page */ = {
+			isa = PBXGroup;
+			children = (
+				1114CC322190E83F00770437 /* Search.storyboard */,
+				1114CC362190E87200770437 /* SearchViewController.swift */,
+				1114CC3D21915E7000770437 /* SearchTableViewCell.swift */,
+			);
+			path = "Search Page";
+			sourceTree = "<group>";
+		};
 		119E730F218CDCED00A8B800 = {
 			isa = PBXGroup;
 			children = (
 				119E731A218CDCED00A8B800 /* iNav UW */,
 				119E732F218CDCEE00A8B800 /* iNav UWTests */,
 				119E7319218CDCED00A8B800 /* Products */,
+				0FAA1D4FE2C8E459D0A39A39 /* Pods */,
+				E64E1F44B9C8484DEA38097E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,12 +121,11 @@
 		119E731A218CDCED00A8B800 /* iNav UW */ = {
 			isa = PBXGroup;
 			children = (
-				119E731B218CDCED00A8B800 /* AppDelegate.swift */,
-				119E731D218CDCED00A8B800 /* ViewController.swift */,
-				119E731F218CDCED00A8B800 /* Main.storyboard */,
-				119E7322218CDCEE00A8B800 /* Assets.xcassets */,
-				119E7324218CDCEE00A8B800 /* LaunchScreen.storyboard */,
-				119E7327218CDCEE00A8B800 /* Info.plist */,
+				119E733F218CF07D00A8B800 /* Resources */,
+				119E7341218CF0A400A8B800 /* Support Files */,
+				119E7343218CF65100A8B800 /* Common */,
+				1114CC352190E84900770437 /* Search Page */,
+				119E7342218CF14A00A8B800 /* Main Page */,
 			);
 			path = "iNav UW";
 			sourceTree = "<group>";
@@ -96,6 +139,62 @@
 			path = "iNav UWTests";
 			sourceTree = "<group>";
 		};
+		119E733F218CF07D00A8B800 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				119E7322218CDCEE00A8B800 /* Assets.xcassets */,
+				119E7340218CF08B00A8B800 /* Vectors */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		119E7340218CF08B00A8B800 /* Vectors */ = {
+			isa = PBXGroup;
+			children = (
+				119E733D218CED9900A8B800 /* CAE-2.svg */,
+			);
+			path = Vectors;
+			sourceTree = "<group>";
+		};
+		119E7341218CF0A400A8B800 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				119E731B218CDCED00A8B800 /* AppDelegate.swift */,
+				11818E402192A27C00DA1AA2 /* ApiKeys.swift */,
+				119E7324218CDCEE00A8B800 /* LaunchScreen.storyboard */,
+				119E7327218CDCEE00A8B800 /* Info.plist */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		119E7342218CF14A00A8B800 /* Main Page */ = {
+			isa = PBXGroup;
+			children = (
+				119E731F218CDCED00A8B800 /* Main.storyboard */,
+				119E731D218CDCED00A8B800 /* MainViewController.swift */,
+				119E734C218D0D1500A8B800 /* POICollectionViewCell.swift */,
+			);
+			path = "Main Page";
+			sourceTree = "<group>";
+		};
+		119E7343218CF65100A8B800 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				119E7346218CF73A00A8B800 /* DesignableView.swift */,
+				119E7348218D05A300A8B800 /* UIViewController+BlurEffects.swift */,
+				119E734A218D083C00A8B800 /* Constants.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E64E1F44B9C8484DEA38097E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				314A89AEABAD48A8BA38438B /* Pods_iNav_UW.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +202,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119E7335218CDCEE00A8B800 /* Build configuration list for PBXNativeTarget "iNav UW" */;
 			buildPhases = (
+				78F3A3C658CB51D414D3CCF4 /* [CP] Check Pods Manifest.lock */,
 				119E7314218CDCED00A8B800 /* Sources */,
 				119E7315218CDCED00A8B800 /* Frameworks */,
 				119E7316218CDCED00A8B800 /* Resources */,
+				D330519225B8DB853100EF50 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -179,7 +280,9 @@
 			files = (
 				119E7326218CDCEE00A8B800 /* LaunchScreen.storyboard in Resources */,
 				119E7323218CDCEE00A8B800 /* Assets.xcassets in Resources */,
+				119E733E218CED9900A8B800 /* CAE-2.svg in Resources */,
 				119E7321218CDCED00A8B800 /* Main.storyboard in Resources */,
+				1114CC342190E83F00770437 /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,13 +295,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		78F3A3C658CB51D414D3CCF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iNav UW-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D330519225B8DB853100EF50 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iNav UW/Pods-iNav UW-frameworks.sh",
+				"${PODS_ROOT}/IndoorAtlas/indooratlas-ios-sdk/IndoorAtlas.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IndoorAtlas.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iNav UW/Pods-iNav UW-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		119E7314218CDCED00A8B800 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				119E731E218CDCED00A8B800 /* ViewController.swift in Sources */,
+				119E734B218D083C00A8B800 /* Constants.swift in Sources */,
+				1114CC372190E87200770437 /* SearchViewController.swift in Sources */,
+				11818E412192A27C00DA1AA2 /* ApiKeys.swift in Sources */,
+				119E7347218CF73A00A8B800 /* DesignableView.swift in Sources */,
+				119E731E218CDCED00A8B800 /* MainViewController.swift in Sources */,
+				119E7349218D05A300A8B800 /* UIViewController+BlurEffects.swift in Sources */,
+				1114CC3E21915E7000770437 /* SearchTableViewCell.swift in Sources */,
 				119E731C218CDCED00A8B800 /* AppDelegate.swift in Sources */,
+				119E734D218D0D1500A8B800 /* POICollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +370,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1114CC322190E83F00770437 /* Search.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1114CC332190E83F00770437 /* Base */,
+			);
+			name = Search.storyboard;
+			sourceTree = "<group>";
+		};
 		119E731F218CDCED00A8B800 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -356,11 +513,13 @@
 		};
 		119E7336218CDCEE00A8B800 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CADD5EF709001E1B41DE019 /* Pods-iNav UW.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8PK9W73UA5;
-				INFOPLIST_FILE = "iNav UW/Info.plist";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "iNav UW/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -374,11 +533,13 @@
 		};
 		119E7337218CDCEE00A8B800 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACED9B12996FF554B9B71903 /* Pods-iNav UW.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8PK9W73UA5;
-				INFOPLIST_FILE = "iNav UW/Info.plist";
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "iNav UW/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

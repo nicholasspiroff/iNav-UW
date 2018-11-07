@@ -1,0 +1,16 @@
+PODS:
+  - IndoorAtlas (2.9.0)
+
+DEPENDENCIES:
+  - IndoorAtlas (= 2.9.0-beta)
+
+SPEC REPOS:
+  https://github.com/IndoorAtlas/CocoaPods-Specs:
+    - IndoorAtlas
+
+SPEC CHECKSUMS:
+  IndoorAtlas: d9af2e8464db21d985db28a07a836cfcb99110c3
+
+PODFILE CHECKSUM: ab8c7f06755ae8906e99bed74dff26b09b3438ed
+
+COCOAPODS: 1.5.3
