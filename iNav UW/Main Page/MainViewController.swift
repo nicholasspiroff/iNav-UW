@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import WebKit
 import IndoorAtlas
 
 class MainViewController: UIViewController, UICollectionViewDelegate,
     UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,
-    IALocationManagerDelegate {
+    IALocationManagerDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak private var mapView: UIView!
-    @IBOutlet weak private var webView: WKWebView!
     @IBOutlet weak private var searchBarView: DesignableView!
     @IBOutlet weak private var poiView: DesignableView!
     @IBOutlet weak private var poiCollectionView: UICollectionView!
@@ -30,13 +28,27 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
     var accuracyCircle = UIView()
     var manager = IALocationManager.sharedInstance()
     
+    @IBAction func pinchGesture(_ sender: UIPinchGestureRecognizer) {
+        imageView.transform = imageView.transform.scaledBy(x: sender.scale, y: sender.scale)
+        sender.scale = 1
+    }
+    
+    @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
+        let trans = sender.translation(in: mapView)
+        imageView.center = CGPoint(x: imageView.center.x + trans.x, y: imageView.center.y + trans.y)
+        sender.setTranslation(CGPoint.zero, in: mapView)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         poiCollectionView.delegate = self
         poiCollectionView.dataSource = self
         
-        setupWebView()
         setupArrowButtons()
         addDarkBlurBackground(toView: searchBarView)
         addDarkBlurBackground(toView: poiView)
@@ -92,12 +104,12 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
         }
     }
 
-    private func setupWebView() {
-        if let path = Bundle.main.path(forResource: "CAE-2", ofType: "svg") {
-            let url = URL.init(fileURLWithPath: path)
-            webView.load(URLRequest(url: url))
-        }
-    }
+//    private func setupWebView() {
+//        if let path = Bundle.main.path(forResource: "CAE-2", ofType: "svg") {
+//            let url = URL.init(fileURLWithPath: path)
+//            webView.load(URLRequest(url: url))
+//        }
+//    }
 
     @IBAction func leftArrowPressed(_ sender: UIButton) {
         guard let minIndex = poiCollectionView.indexPathsForVisibleItems.min()?.item else {
@@ -223,7 +235,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
         })
         
         if let traceId = manager.extraInfo?[kIATraceId] as? NSString {
-            print("TraceID: \(traceId)")
+//            print("TraceID: \(traceId)")
         }
     }
     
@@ -274,5 +286,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
         // Request location updates
         manager.startUpdatingLocation()
     }
+    
+    
 }
 

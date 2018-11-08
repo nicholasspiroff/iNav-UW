@@ -22,24 +22,12 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ea0-QC-rkz" userLabel="Map View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <wkWebView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JoN-Cd-rvb">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                        <color key="backgroundColor" red="0.748063808188969" green="0.74658116420413267" blue="0.77336299419403076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <wkWebViewConfiguration key="configuration" allowsAirPlayForMediaPlayback="NO" allowsPictureInPictureMediaPlayback="NO">
-                                            <dataDetectorTypes key="dataDetectorTypes" none="YES"/>
-                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                            <wkPreferences key="preferences" javaScriptEnabled="NO"/>
-                                        </wkWebViewConfiguration>
-                                    </wkWebView>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="JoN-Cd-rvb" firstAttribute="top" secondItem="ea0-QC-rkz" secondAttribute="top" id="DHp-NB-2oI"/>
-                                    <constraint firstItem="JoN-Cd-rvb" firstAttribute="leading" secondItem="ea0-QC-rkz" secondAttribute="leading" id="QoS-dB-WSJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="JoN-Cd-rvb" secondAttribute="trailing" id="YCg-3p-90x"/>
-                                    <constraint firstAttribute="bottom" secondItem="JoN-Cd-rvb" secondAttribute="bottom" id="kXb-Np-wD4"/>
-                                </constraints>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="dcY-cn-bBH" appends="YES" id="5kl-hi-RjW"/>
+                                    <outletCollection property="gestureRecognizers" destination="2Dc-nJ-73f" appends="YES" id="esq-V6-jEP"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJh-xI-zoT" userLabel="Search Bar View" customClass="DesignableView" customModule="iNav_UW" customModuleProvider="target">
                                 <rect key="frame" x="16" y="28" width="343" height="50"/>
@@ -233,10 +221,21 @@
                         <outlet property="poiView" destination="TtB-gR-iTa" id="W7c-Se-5z3"/>
                         <outlet property="rightArrow" destination="Yr8-6v-8cf" id="d1V-p9-0Dk"/>
                         <outlet property="searchBarView" destination="XJh-xI-zoT" id="hGd-K8-yGD"/>
-                        <outlet property="webView" destination="JoN-Cd-rvb" id="Q6B-mg-NgI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="dcY-cn-bBH">
+                    <connections>
+                        <action selector="pinchGesture:" destination="BYZ-38-t0r" id="9o2-dd-LXH"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="Ius-Ru-yip"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="2Dc-nJ-73f">
+                    <connections>
+                        <action selector="panGesture:" destination="BYZ-38-t0r" id="zhB-qQ-xLY"/>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="90N-2y-ViZ"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="141.59999999999999" y="133.5832083958021"/>
         </scene>
