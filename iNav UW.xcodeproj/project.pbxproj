@@ -22,6 +22,7 @@
 		119E7349218D05A300A8B800 /* UIViewController+BlurEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E7348218D05A300A8B800 /* UIViewController+BlurEffects.swift */; };
 		119E734B218D083C00A8B800 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E734A218D083C00A8B800 /* Constants.swift */; };
 		119E734D218D0D1500A8B800 /* POICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E734C218D0D1500A8B800 /* POICollectionViewCell.swift */; };
+		11DDABBF2193EBC800929EE4 /* SectionTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DDABBE2193EBC800929EE4 /* SectionTitleTableViewCell.swift */; };
 		B55F4B4BD77D6E65162E036E /* Pods_iNav_UW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 314A89AEABAD48A8BA38438B /* Pods_iNav_UW.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		119E7348218D05A300A8B800 /* UIViewController+BlurEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+BlurEffects.swift"; sourceTree = "<group>"; };
 		119E734A218D083C00A8B800 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		119E734C218D0D1500A8B800 /* POICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POICollectionViewCell.swift; sourceTree = "<group>"; };
+		11DDABBE2193EBC800929EE4 /* SectionTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleTableViewCell.swift; sourceTree = "<group>"; };
 		314A89AEABAD48A8BA38438B /* Pods_iNav_UW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iNav_UW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACED9B12996FF554B9B71903 /* Pods-iNav UW.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNav UW.release.xcconfig"; path = "Pods/Target Support Files/Pods-iNav UW/Pods-iNav UW.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +96,7 @@
 				1114CC322190E83F00770437 /* Search.storyboard */,
 				1114CC362190E87200770437 /* SearchViewController.swift */,
 				1114CC3D21915E7000770437 /* SearchTableViewCell.swift */,
+				11DDABBE2193EBC800929EE4 /* SectionTitleTableViewCell.swift */,
 			);
 			path = "Search Page";
 			sourceTree = "<group>";
@@ -322,10 +325,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iNav UW/Pods-iNav UW-frameworks.sh",
 				"${PODS_ROOT}/IndoorAtlas/indooratlas-ios-sdk/IndoorAtlas.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IndoorAtlas.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -347,6 +352,7 @@
 				119E7349218D05A300A8B800 /* UIViewController+BlurEffects.swift in Sources */,
 				1114CC3E21915E7000770437 /* SearchTableViewCell.swift in Sources */,
 				119E731C218CDCED00A8B800 /* AppDelegate.swift in Sources */,
+				11DDABBF2193EBC800929EE4 /* SectionTitleTableViewCell.swift in Sources */,
 				119E734D218D0D1500A8B800 /* POICollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

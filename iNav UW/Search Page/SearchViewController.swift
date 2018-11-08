@@ -8,7 +8,8 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class SearchViewController: UIViewController, UITextFieldDelegate,
+    UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak private var searchTextField: UITextField!
     @IBOutlet weak private var resultsTableView: UITableView!
@@ -16,13 +17,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        modalPresentationCapturesStatusBarAppearance = true
         setupSearchTextField()
         setupTableView()
-        addDarkBlurBackground(toView: contentView)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -35,6 +32,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     }
     
     private func setupSearchTextField() {
+        searchTextField.delegate = self
         searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [
             NSAttributedStringKey.foregroundColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
         ])
@@ -45,7 +43,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         resultsTableView.dataSource = self
         resultsTableView.layer.borderWidth = 1
         resultsTableView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
-        resultsTableView.layer.cornerRadius = 10
+        resultsTableView.layer.cornerRadius = 2
         resultsTableView.layer.masksToBounds = true
     }
     
@@ -58,11 +56,22 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         searchTextField.resignFirstResponder()
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.item == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "sectionLabel", for: indexPath) as! SectionTitleTableViewCell
+            cell.setTitle(to: "Test Header")
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
         cell.setMainTitle(to: "Cell \(indexPath.item)")
         cell.setSubtitle(to: "Smol Cell \(indexPath.item)")

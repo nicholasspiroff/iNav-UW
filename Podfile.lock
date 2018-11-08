@@ -1,16 +1,21 @@
 PODS:
   - IndoorAtlas (2.9.0)
+  - SideMenu (4.0.0)
 
 DEPENDENCIES:
   - IndoorAtlas (= 2.9.0-beta)
+  - SideMenu
 
 SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SideMenu
   https://github.com/IndoorAtlas/CocoaPods-Specs:
     - IndoorAtlas
 
 SPEC CHECKSUMS:
   IndoorAtlas: d9af2e8464db21d985db28a07a836cfcb99110c3
+  SideMenu: 1288ceec541392e763cfd2d0e9471fe6caea8b3b
 
-PODFILE CHECKSUM: ab8c7f06755ae8906e99bed74dff26b09b3438ed
+PODFILE CHECKSUM: bd3fbd1be45fc8df1ad9a0876f9bffd3ba3baee0
 
 COCOAPODS: 1.5.3

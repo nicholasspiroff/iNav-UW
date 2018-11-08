@@ -8,6 +8,7 @@
 
 import UIKit
 import IndoorAtlas
+import SideMenu
 
 class MainViewController: UIViewController, UICollectionViewDelegate,
     UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,
@@ -52,11 +53,15 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
         setupArrowButtons()
         addDarkBlurBackground(toView: searchBarView)
         addDarkBlurBackground(toView: poiView)
+        
+        setupMapView()
+        SideMenuManager.default.menuFadeStatusBar = false
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+    private func setupMapView() {
+    
         // Add map imageView to the map view
         mapView.addSubview(imageView)
         
@@ -81,13 +86,13 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
         requestLocation()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        
-        manager.stopUpdatingLocation()
-        manager.delegate = nil
-        imageView.image = nil
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(true)
+//
+//        manager.stopUpdatingLocation()
+//        manager.delegate = nil
+//        imageView.image = nil
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
