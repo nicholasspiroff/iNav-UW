@@ -21,6 +21,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak private var leftArrow: UIButton!
     @IBOutlet weak private var rightArrow: UIButton!
     
+    // Example data for points of interest collection view
     let pois = ["Bathrooms", "Water Fountains", "Libraries", "Offices", "Test 1", "Test 2", "Test 3", "Test 4"]
     
     var floorPlan = IAFloorPlan()
@@ -29,19 +30,76 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
     var accuracyCircle = UIView()
     var manager = IALocationManager.sharedInstance()
     
+    /// Detects when the user performs a pinch gesture on the floor plan image.
+    /// Scales the image and its child views accordingly.
     @IBAction func pinchGesture(_ sender: UIPinchGestureRecognizer) {
-        imageView.transform = imageView.transform.scaledBy(x: sender.scale, y: sender.scale)
-        sender.scale = 1
+        
+        let newWidth = imageView.frame.width * sender.scale
+        
+        if newWidth >= mapView.frame.width && newWidth <= mapView.frame.width * 7  {
+            adjustAnchorPointForGestureRecognizer(sender)
+            imageView.transform = imageView.transform.scaledBy(x: sender.scale,
+                                                               y: sender.scale)
+            
+            sender.scale = 1
+        }
     }
     
+    /// Detects when the user performs a pan gesture on the floor plan image.
+    /// Moves the image and its child views accordingly.
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
+        
         let trans = sender.translation(in: mapView)
-        imageView.center = CGPoint(x: imageView.center.x + trans.x, y: imageView.center.y + trans.y)
+        let newFrame = CGRect(x: imageView.frame.origin.x + trans.x,
+                              y: imageView.frame.origin.y + trans.y,
+                              width: imageView.frame.width,
+                              height: imageView.frame.height)
+        
+        var allowedTrans = CGPoint.zero
+        
+        if (trans.x < 0 && newFrame.maxX >= mapView.frame.width) ||
+            (trans.x > 0 && newFrame.minX <= 0) {
+            
+            allowedTrans.x = trans.x
+        }
+        
+        if (trans.y < 0 && newFrame.maxY >= mapView.frame.height) ||
+            (trans.y > 0 && newFrame.minY <= 0) {
+  
+            allowedTrans.y = trans.y
+        }
+        
+        
+        imageView.center = CGPoint(x: imageView.center.x + allowedTrans.x,
+                                   y: imageView.center.y + allowedTrans.y)
+
         sender.setTranslation(CGPoint.zero, in: mapView)
     }
     
+    @IBAction func rotateGesture(_ sender: UIRotationGestureRecognizer) {
+//        imageView.transform =  imageView.transform.rotated(by: sender.rotation)
+//        sender.rotation = 0
+    }
+    
+    /// Allows the pinch and pan gesture to be detected at the same time, per
+    /// the UIGestureRecoginzerDelegate protocol.
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+    
+    private func adjustAnchorPointForGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
+        if gestureRecognizer.state == UIGestureRecognizerState.began {
+            if let affectedView = gestureRecognizer.view {
+                let locInView = gestureRecognizer.location(in: affectedView)
+                let locInSuperView = gestureRecognizer.location(in: affectedView.superview)
+                
+                affectedView.layer.anchorPoint =
+                    CGPoint(x: locInView.x / affectedView.bounds.width,
+                            y: locInView.y / affectedView.bounds.height)
+                
+                affectedView.center = locInSuperView
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -58,8 +116,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
         SideMenuManager.default.menuFadeStatusBar = false
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
+    /// Initialize the map view. Add the floorplan image, create the location
+    /// indicator and start monitoring the user's location.
     private func setupMapView() {
     
         // Add map imageView to the map view
@@ -99,10 +157,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
         // Dispose of any resources that can be recreated.
     }
     
+    /// Initialize the arrow buttons on the sides of the points of interest
+    /// collection view.
     private func setupArrowButtons() {
+        
+        // Ensure the button images maintain their aspect ratio
         leftArrow.imageView?.contentMode = .scaleAspectFit
         rightArrow.imageView?.contentMode = .scaleAspectFit
         
+        // Left arrow starts out as hidden, right arrow only displayed if there
+        // are more than 3 points of interest
         leftArrow.alpha = 0
         if pois.count <= 3 {
             rightArrow.alpha = 0
@@ -116,57 +180,84 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
 //        }
 //    }
 
+    /// Pages the points of interest collection view to the left.
     @IBAction func leftArrowPressed(_ sender: UIButton) {
+        
+        // Retrieve the minimum index of the collection view that's currently displayed
         guard let minIndex = poiCollectionView.indexPathsForVisibleItems.min()?.item else {
             print("Couldn't find minimum item")
             return
         }
         
+        // Scroll to the item 3 indices behind the current one, making sure not
+        // to go lower than the first item
         if minIndex != 0 {
             let destIndex = minIndex - 3
             if destIndex < 0 {
-                poiCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: true)
+                poiCollectionView.scrollToItem(
+                    at: IndexPath(item: 0, section: 0),
+                    at: .left, animated: true)
             }
             else {
-                poiCollectionView.scrollToItem(at: IndexPath(item: destIndex, section: 0), at: .left, animated: true)
+                poiCollectionView.scrollToItem(
+                    at: IndexPath(item: destIndex, section: 0),
+                    at: .left, animated: true)
             }
         }
     }
     
+    /// Pages the points of interest collection view to the right.
     @IBAction func rightArrowPressed(_ sender: UIButton) {
+        
+        // Retrieve the minimum index of the collection view that's currently displayed
         guard let minIndex = poiCollectionView.indexPathsForVisibleItems.min()?.item else {
             print("Couldn't find minimum item")
             return
         }
         
+        // Retrieve the maximum index of the collection view that's currently displayed
         guard let maxIndex = poiCollectionView.indexPathsForVisibleItems.max()?.item else {
             print("Couldn't find maximum item")
             return
         }
         
+        // Scroll to the item 3 indices above the current one, making sure not
+        // to go higher than the final item
         if maxIndex != pois.count - 1 {
             let destIndex = minIndex + 3
             if destIndex > pois.count - 1 {
-                poiCollectionView.scrollToItem(at: IndexPath(item: pois.count - 1, section: 0), at: .right, animated: true)
+                poiCollectionView.scrollToItem(
+                    at: IndexPath(item: pois.count - 1, section: 0),
+                    at: .right, animated: true)
             }
             else {
-                poiCollectionView.scrollToItem(at: IndexPath(item: minIndex + 3, section: 0), at: .left, animated: true)
+                poiCollectionView.scrollToItem(
+                    at: IndexPath(item: minIndex + 3, section: 0),
+                    at: .left, animated: true)
             }
         }
     }
     
+    /// Handler for when a point of interest item is selected.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.item)
     }
     
+    /// Required function for the UICollectionViewDataSource protocol.
+    /// Returns the number of items in the collection view.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pois.count
     }
     
+    /// Required function for the UICollectionViewDataSource protocol.
+    /// Returns a cell object for   each index of the collection view.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // Initialize a POICollectionViewCell instance
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "poiCell", for: indexPath) as! POICollectionViewCell
         cell.setTitle(to: pois[indexPath.item])
         
+        // Change the background color for every set of 3 collection view cells
         let index = indexPath.item % 3
         switch index {
             case 0: cell.setBackgroundColor(to: Constants.uwLightRed)
@@ -178,10 +269,14 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
         return cell
     }
     
+    /// Optional function from the UICollectionViewDelegateFlowLayout.
+    /// Returns a unique size for each cell in the collection view.
+    /// In this case, sizes each cell so exactl 3 fit on screen.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 3, height: collectionView.frame.width / 3)
     }
     
+    /// Detects when the user scrolled through the POI collection view.
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let maxHoriz = scrollView.contentSize.width - scrollView.frame.width
         let curHoriz = scrollView.contentOffset.x
