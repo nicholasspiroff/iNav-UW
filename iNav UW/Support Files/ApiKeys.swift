@@ -9,8 +9,8 @@
 import Foundation
 
 // API keys can be generated at <http://developer.indooratlas.com/applications>
-let kAPIKey = "e27cc0bd-8916-48a4-9ad8-538acafb16fd"
-let kAPISecret = "Yscj1dRXUzgezhZjbZB403ss1fYKOUtGSDUWWy6LUYQeBrbjApcq1Mic4txUsq7gSFAD19f4IEHkoToqgMvfGV6TIGH/kqXGsO5XcnASbPGTBt35+rqJ6PeVfTN1/w=="
+let kAPIKey = "78319061-4226-4a8a-a6e8-d377d2043abc"
+let kAPISecret = "HD6lgcnHd2On6+c4DfjlxIOWIpuyBCJPPaaNm7ZQe5TyFHjOQPy4nFn2N7zvOTJtZ/2pdfTJzrFSermUXscLdhOc3BtxdcUrgAkHdXykZNjHJkQDphdlb1lue469iA=="
 
 // Floor plan id is same as "FloorplanId" at the <http://developer.indooratlas.com/venues>
 let kFloorplanId = "fe1cf605-ba58-45c6-b529-f7ce22587f03"
