@@ -11,8 +11,7 @@ import IndoorAtlas
 import SideMenu
 
 class MainViewController: UIViewController, UICollectionViewDelegate,
-    UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,
-    IALocationManagerDelegate, UIGestureRecognizerDelegate {
+    UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak private var mapView: UIView!
     @IBOutlet weak private var searchBarView: DesignableView!
@@ -24,83 +23,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
     // Example data for points of interest collection view
     let pois = ["Bathrooms", "Water Fountains", "Libraries", "Offices", "Test 1", "Test 2", "Test 3", "Test 4"]
     
-    var floorPlan = IAFloorPlan()
-    var imageView = UIImageView()
-    var circle = UIView()
-    var accuracyCircle = UIView()
-    var manager = IALocationManager.sharedInstance()
-    
-    /// Detects when the user performs a pinch gesture on the floor plan image.
-    /// Scales the image and its child views accordingly.
-    @IBAction func pinchGesture(_ sender: UIPinchGestureRecognizer) {
-        
-        let newWidth = imageView.frame.width * sender.scale
-        
-        if newWidth >= mapView.frame.width && newWidth <= mapView.frame.width * 7  {
-            adjustAnchorPointForGestureRecognizer(sender)
-            imageView.transform = imageView.transform.scaledBy(x: sender.scale,
-                                                               y: sender.scale)
-            
-            sender.scale = 1
-        }
-    }
-    
-    /// Detects when the user performs a pan gesture on the floor plan image.
-    /// Moves the image and its child views accordingly.
-    @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
-        
-        let trans = sender.translation(in: mapView)
-        let newFrame = CGRect(x: imageView.frame.origin.x + trans.x,
-                              y: imageView.frame.origin.y + trans.y,
-                              width: imageView.frame.width,
-                              height: imageView.frame.height)
-        
-        var allowedTrans = CGPoint.zero
-        
-        if (trans.x < 0 && newFrame.maxX >= mapView.frame.width) ||
-            (trans.x > 0 && newFrame.minX <= 0) {
-            
-            allowedTrans.x = trans.x
-        }
-        
-        if (trans.y < 0 && newFrame.maxY >= mapView.frame.height) ||
-            (trans.y > 0 && newFrame.minY <= 0) {
-  
-            allowedTrans.y = trans.y
-        }
-        
-        
-        imageView.center = CGPoint(x: imageView.center.x + allowedTrans.x,
-                                   y: imageView.center.y + allowedTrans.y)
-
-        sender.setTranslation(CGPoint.zero, in: mapView)
-    }
-    
-    @IBAction func rotateGesture(_ sender: UIRotationGestureRecognizer) {
-//        imageView.transform =  imageView.transform.rotated(by: sender.rotation)
-//        sender.rotation = 0
-    }
-    
-    /// Allows the pinch and pan gesture to be detected at the same time, per
-    /// the UIGestureRecoginzerDelegate protocol.
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-    
-    private func adjustAnchorPointForGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer) {
-        if gestureRecognizer.state == UIGestureRecognizerState.began {
-            if let affectedView = gestureRecognizer.view {
-                let locInView = gestureRecognizer.location(in: affectedView)
-                let locInSuperView = gestureRecognizer.location(in: affectedView.superview)
-                
-                affectedView.layer.anchorPoint =
-                    CGPoint(x: locInView.x / affectedView.bounds.width,
-                            y: locInView.y / affectedView.bounds.height)
-                
-                affectedView.center = locInSuperView
-            }
-        }
-    }
+    var map: Map!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,45 +35,12 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
         addDarkBlurBackground(toView: searchBarView)
         addDarkBlurBackground(toView: poiView)
         
-        setupMapView()
         SideMenuManager.default.menuFadeStatusBar = false
     }
     
-    /// Initialize the map view. Add the floorplan image, create the location
-    /// indicator and start monitoring the user's location.
-    private func setupMapView() {
-    
-        // Add map imageView to the map view
-        mapView.addSubview(imageView)
-        
-        // Settings for the dot that is displayed on the image
-        self.circle = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
-        self.circle.backgroundColor = UIColor.init(red: 22/255, green: 129/255, blue: 251/255, alpha: 1.0)
-        self.circle.layer.cornerRadius = self.circle.frame.size.width / 2
-        self.circle.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
-        self.circle.layer.borderWidth = 0.1
-        circle.isHidden = true
-        
-        self.accuracyCircle = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
-        self.accuracyCircle.layer.cornerRadius = accuracyCircle.frame.width / 2
-        self.accuracyCircle.backgroundColor = UIColor(red: 22/255, green: 129/255, blue: 251/255, alpha: 0.2)
-        self.accuracyCircle.isHidden = true
-        self.accuracyCircle.layer.borderWidth = 0.005
-        self.accuracyCircle.layer.borderColor = UIColor(red: 22/255, green: 129/255, blue: 251/255, alpha: 0.3).cgColor
-        imageView.addSubview(self.accuracyCircle)
-        imageView.addSubview(circle)
-        
-        // Start requesting updates
-        requestLocation()
+    override func viewDidAppear(_ animated: Bool) {
+        map = Map(parentView: mapView)
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(true)
-//
-//        manager.stopUpdatingLocation()
-//        manager.delegate = nil
-//        imageView.image = nil
-//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -172,13 +62,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
             rightArrow.alpha = 0
         }
     }
-
-//    private func setupWebView() {
-//        if let path = Bundle.main.path(forResource: "CAE-2", ofType: "svg") {
-//            let url = URL.init(fileURLWithPath: path)
-//            webView.load(URLRequest(url: url))
-//        }
-//    }
 
     /// Pages the points of interest collection view to the left.
     @IBAction func leftArrowPressed(_ sender: UIButton) {
@@ -308,85 +191,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
             rightArrow.alpha = 0.75
         }
     }
-    
-    func indoorLocationManager(_ manager: IALocationManager, didUpdateLocations locations: [Any]) {
-        // Conversion to IALocation
-        let l = locations.last as! IALocation
-        
-        // The accuracy of coordinate position depends on the placement of floor plan image.
-        let point = floorPlan.coordinate(toPoint: (l.location?.coordinate)!)
-        
-        guard let accuracy = l.location?.horizontalAccuracy else { return }
-        let conversion = floorPlan.meterToPixelConversion
-        
-        let size = CGFloat(accuracy * Double(conversion))
-        
-        self.view.bringSubview(toFront: self.accuracyCircle)
-        self.view.bringSubview(toFront: self.circle)
-        
-        circle.isHidden = false
-        accuracyCircle.isHidden = false
-        
-        // Animate circle with duration 0 or 0.35 depending if the circle is hidden or not
-        UIView.animate(withDuration: self.circle.isHidden ? 0 : 0.35, animations: {
-            self.accuracyCircle.center = point
-            self.circle.center = point
-            self.accuracyCircle.transform = CGAffineTransform(scaleX: CGFloat(size), y: CGFloat(size))
-        })
-        
-        if let traceId = manager.extraInfo?[kIATraceId] as? NSString {
-//            print("TraceID: \(traceId)")
-        }
-    }
-    
-    func indoorLocationManager(_ manager: IALocationManager, didEnter region: IARegion) {
-        // If the region type is different than kIARegionTypeFloorPlan app quits
-        guard region.type == ia_region_type.iaRegionTypeFloorPlan else { return }
-        
-        // Fetches floorplan with the given region identifier
-        if (region.floorplan != nil) {
-            self.floorPlan = region.floorplan!
-            fetchFloorplanImage(region.floorplan!)
-        }
-    }
-    
-    func fetchFloorplanImage(_ floorplan:IAFloorPlan) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            let imageData = try? Data(contentsOf: floorplan.imageUrl!)
-            if (imageData == nil) {
-                NSLog("Error fetching floor plan image")
-            }
-            // Bounce back to the main thread to update the UI
-            DispatchQueue.main.async {
-                let image = UIImage.init(data: imageData!)!
-                // Scale the image and do CGAffineTransform
-                let scale = fmin(1.0, fmin(self.mapView.bounds.size.width / CGFloat((floorplan.width)), self.mapView.bounds.size.height / CGFloat((floorplan.height))))
-                let t:CGAffineTransform = CGAffineTransform(scaleX: scale, y: scale)
-                self.imageView.transform = CGAffineTransform.identity
-                self.imageView.image = image
-                self.imageView.frame = CGRect(x: 0, y: 0, width: CGFloat((floorplan.width)), height: CGFloat((floorplan.height)))
-                self.imageView.transform = t
-                self.imageView.center = self.view.center
-                
-                self.imageView.backgroundColor = UIColor.white
-                
-                // Scale the blue dot as well
-                let size = CGFloat((floorplan.meterToPixelConversion))
-                self.circle.transform = CGAffineTransform(scaleX: size, y: size)
-            }
-        }
-    }
-    
-    func requestLocation() {
-        // Point delegate to receiver
-        manager.delegate = self
-        
-        manager.lockIndoors(true)
-        
-        // Request location updates
-        manager.startUpdatingLocation()
-    }
-    
     
 }
 

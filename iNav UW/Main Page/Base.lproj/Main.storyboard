@@ -24,11 +24,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="dcY-cn-bBH" appends="YES" id="5kl-hi-RjW"/>
-                                    <outletCollection property="gestureRecognizers" destination="2Dc-nJ-73f" appends="YES" id="esq-V6-jEP"/>
-                                    <outletCollection property="gestureRecognizers" destination="3Xl-ms-Ole" appends="YES" id="Hnp-vF-wcr"/>
-                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJh-xI-zoT" userLabel="Search Bar View" customClass="DesignableView" customModule="iNav_UW" customModuleProvider="target">
                                 <rect key="frame" x="16" y="28" width="343" height="50"/>
@@ -228,23 +223,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <pinchGestureRecognizer id="dcY-cn-bBH">
-                    <connections>
-                        <action selector="pinchGesture:" destination="BYZ-38-t0r" id="9o2-dd-LXH"/>
-                        <outlet property="delegate" destination="BYZ-38-t0r" id="Ius-Ru-yip"/>
-                    </connections>
-                </pinchGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="2Dc-nJ-73f">
-                    <connections>
-                        <action selector="panGesture:" destination="BYZ-38-t0r" id="zhB-qQ-xLY"/>
-                        <outlet property="delegate" destination="BYZ-38-t0r" id="90N-2y-ViZ"/>
-                    </connections>
-                </panGestureRecognizer>
-                <rotationGestureRecognizer id="3Xl-ms-Ole">
-                    <connections>
-                        <action selector="rotateGesture:" destination="BYZ-38-t0r" id="XC4-t0-sSh"/>
-                    </connections>
-                </rotationGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="141.59999999999999" y="133.5832083958021"/>
         </scene>
