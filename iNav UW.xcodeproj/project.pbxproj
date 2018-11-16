@@ -17,7 +17,6 @@
 		119E7323218CDCEE00A8B800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 119E7322218CDCEE00A8B800 /* Assets.xcassets */; };
 		119E7326218CDCEE00A8B800 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 119E7324218CDCEE00A8B800 /* LaunchScreen.storyboard */; };
 		119E7331218CDCEE00A8B800 /* iNav_UWTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E7330218CDCEE00A8B800 /* iNav_UWTests.swift */; };
-		119E733E218CED9900A8B800 /* CAE-2.svg in Resources */ = {isa = PBXBuildFile; fileRef = 119E733D218CED9900A8B800 /* CAE-2.svg */; };
 		119E7347218CF73A00A8B800 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E7346218CF73A00A8B800 /* DesignableView.swift */; };
 		119E7349218D05A300A8B800 /* UIViewController+BlurEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E7348218D05A300A8B800 /* UIViewController+BlurEffects.swift */; };
 		119E734B218D083C00A8B800 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E734A218D083C00A8B800 /* Constants.swift */; };
@@ -55,7 +54,6 @@
 		119E732C218CDCEE00A8B800 /* iNav UWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iNav UWTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		119E7330218CDCEE00A8B800 /* iNav_UWTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iNav_UWTests.swift; sourceTree = "<group>"; };
 		119E7332218CDCEE00A8B800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		119E733D218CED9900A8B800 /* CAE-2.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "CAE-2.svg"; sourceTree = "<group>"; };
 		119E7346218CF73A00A8B800 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		119E7348218D05A300A8B800 /* UIViewController+BlurEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+BlurEffects.swift"; sourceTree = "<group>"; };
 		119E734A218D083C00A8B800 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -154,17 +152,8 @@
 			children = (
 				11E8FE39219E702100395CE3 /* Locations.json */,
 				119E7322218CDCEE00A8B800 /* Assets.xcassets */,
-				119E7340218CF08B00A8B800 /* Vectors */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		119E7340218CF08B00A8B800 /* Vectors */ = {
-			isa = PBXGroup;
-			children = (
-				119E733D218CED9900A8B800 /* CAE-2.svg */,
-			);
-			path = Vectors;
 			sourceTree = "<group>";
 		};
 		119E7341218CF0A400A8B800 /* Support Files */ = {
@@ -301,7 +290,6 @@
 				119E7326218CDCEE00A8B800 /* LaunchScreen.storyboard in Resources */,
 				119E7323218CDCEE00A8B800 /* Assets.xcassets in Resources */,
 				11E8FE3A219E702100395CE3 /* Locations.json in Resources */,
-				119E733E218CED9900A8B800 /* CAE-2.svg in Resources */,
 				119E7321218CDCED00A8B800 /* Main.storyboard in Resources */,
 				1114CC342190E83F00770437 /* Search.storyboard in Resources */,
 			);
