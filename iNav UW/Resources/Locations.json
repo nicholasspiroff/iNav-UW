@@ -1,0 +1,284 @@
+{
+	"destinations" : [
+		{
+			"name" : "Room 294",
+			"class" : "room",
+			"latitude" : 43.072616,
+			"longitude" : -89.40945173,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 292",
+			"class" : "room",
+			"latitude" : 43.07262738,
+			"longitude" : -89.40946879,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 290",
+			"class" : "room",
+			"latitude" : 43.0726331,
+			"longitude" : -89.40948635,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 284",
+			"class" : "room",
+			"latitude" : 43.07267144,
+			"longitude" : -89.40960524,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 282",
+			"class" : "room",
+			"latitude" : 43.07267743,
+			"longitude" : -89.40962138,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 283",
+			"class" : "room",
+			"latitude" : 43.07266811,
+			"longitude" : -89.40962495,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 281",
+			"class" : "room",
+			"latitude" : 43.07268484,
+			"longitude" : -89.40967525,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 280",
+			"class" : "room",
+			"latitude" : 43.07269421,
+			"longitude" : -89.40967285,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 278",
+			"class" : "room",
+			"latitude" : 43.07270018,
+			"longitude" : -89.40969023,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 277",
+			"class" : "room",
+			"latitude" : 43.07270265,
+			"longitude" : -89.4097284,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 276",
+			"class" : "room",
+			"latitude" : 43.07271698,
+			"longitude" : -89.40974057,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 274",
+			"class" : "room",
+			"latitude" : 43.07272247,
+			"longitude" : -89.40975783,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 273",
+			"class" : "room",
+			"latitude" : 43.0727191,
+			"longitude" : -89.40978504,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 272",
+			"class" : "room",
+			"latitude" : 43.07273872,
+			"longitude" : -89.40980921,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 271",
+			"class" : "room",
+			"latitude" : 43.0727322,
+			"longitude" : -89.40982241,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 270",
+			"class" : "room",
+			"latitude" : 43.0727451,
+			"longitude" : -89.40982578,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 268",
+			"class" : "room",
+			"latitude" : 43.07275588,
+			"longitude" : -89.40985998,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 264",
+			"class" : "room",
+			"latitude" : 43.07274375,
+			"longitude" : -89.40988574,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 266",
+			"class" : "room",
+			"latitude" : 43.07275984,
+			"longitude" : -89.40988363,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 262",
+			"class" : "room",
+			"latitude" : 43.0727171,
+			"longitude" : -89.40988647,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 260",
+			"class" : "room",
+			"latitude" : 43.07268919,
+			"longitude" : -89.40988671,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 258",
+			"class" : "room",
+			"latitude" : 43.07266137,
+			"longitude" : -89.40988538,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 256",
+			"class" : "room",
+			"latitude" : 43.07264886,
+			"longitude" : -89.40988573,
+			"floor" : 2
+		},
+		{
+			"name" : "Women's Bathroom",
+			"class" : "wbr",
+			"latitude" : 43.07261573,
+			"longitude" : -89.40984019,
+			"floor" : 2
+		},
+		{
+			"name" : "Men's Bathroom",
+			"class" : "mbr",
+			"latitude" : 43.07262626,
+			"longitude" : -89.40976761,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 240",
+			"class" : "room",
+			"latitude" : 43.07252584,
+			"longitude" : -89.40975024,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 241",
+			"class" : "room",
+			"latitude" : 43.07247241,
+			"longitude" : -89.40975549,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 230",
+			"class" : "room",
+			"latitude" : 43.07250958,
+			"longitude" : -89.4096912,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 245",
+			"class" : "room",
+			"latitude" : 43.07246847,
+			"longitude" : -89.40970017,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 225B",
+			"class" : "room",
+			"latitude" : 43.07247063,
+			"longitude" : -89.40967655,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 225D",
+			"class" : "room",
+			"latitude" : 43.07246889,
+			"longitude" : -89.40964213,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 225C",
+			"class" : "room",
+			"latitude" : 43.07246911,
+			"longitude" : -89.40960862,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 294",
+			"class" : "room",
+			"latitude" : 43.07248396,
+			"longitude" : -89.40959858,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 225B",
+			"class" : "room",
+			"latitude" : 43.07246908,
+			"longitude" : -89.40957598,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 211",
+			"class" : "room",
+			"latitude" : 43.07246953,
+			"longitude" : -89.40948704,
+			"floor" : 2
+		},
+		{
+			"name" : "Men's Bathroom",
+			"class" : "mbr",
+			"latitude" : 43.07248118,
+			"longitude" : -89.40949794,
+			"floor" : 2
+		},
+		{
+			"name" : "Women's Bathroom",
+			"class" : "wbr",
+			"latitude" : 43.07250948,
+			"longitude" : -89.40945865,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 208",
+			"class" : "room",
+			"latitude" : 43.07250948,
+			"longitude" : -89.40945865,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 201",
+			"class" : "room",
+			"latitude" : 43.07247613,
+			"longitude" : -89.4094408,
+			"floor" : 2
+		},
+		{
+			"name" : "Room 250",
+			"class" : "room",
+			"latitude" : 43.07256644,
+			"longitude" : -89.40979892,
+			"floor" : 2
+		}
+	]
+}

@@ -1,21 +1,25 @@
 PODS:
   - IndoorAtlas (2.9.0)
   - SideMenu (4.0.0)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - IndoorAtlas (= 2.9.0-beta)
   - SideMenu
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - SideMenu
+    - SwiftyJSON
   https://github.com/IndoorAtlas/CocoaPods-Specs:
     - IndoorAtlas
 
 SPEC CHECKSUMS:
   IndoorAtlas: d9af2e8464db21d985db28a07a836cfcb99110c3
   SideMenu: 1288ceec541392e763cfd2d0e9471fe6caea8b3b
+  SwiftyJSON: 4605deb82c5ce2ea044e06ce0c295adf721d892f
 
-PODFILE CHECKSUM: 75367e25f032c030e632bb63b9e43cfb1850363a
+PODFILE CHECKSUM: c7e499b52d4a9901218556895a9133844e2f1ffb
 
 COCOAPODS: 1.5.3

@@ -23,6 +23,8 @@
 		119E734B218D083C00A8B800 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E734A218D083C00A8B800 /* Constants.swift */; };
 		119E734D218D0D1500A8B800 /* POICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E734C218D0D1500A8B800 /* POICollectionViewCell.swift */; };
 		11DDABBF2193EBC800929EE4 /* SectionTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DDABBE2193EBC800929EE4 /* SectionTitleTableViewCell.swift */; };
+		11E8FE3A219E702100395CE3 /* Locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 11E8FE39219E702100395CE3 /* Locations.json */; };
+		11E8FE3C219E705C00395CE3 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E8FE3B219E705C00395CE3 /* Locations.swift */; };
 		B55F4B4BD77D6E65162E036E /* Pods_iNav_UW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 314A89AEABAD48A8BA38438B /* Pods_iNav_UW.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,8 @@
 		119E734A218D083C00A8B800 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		119E734C218D0D1500A8B800 /* POICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POICollectionViewCell.swift; sourceTree = "<group>"; };
 		11DDABBE2193EBC800929EE4 /* SectionTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleTableViewCell.swift; sourceTree = "<group>"; };
+		11E8FE39219E702100395CE3 /* Locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Locations.json; sourceTree = "<group>"; };
+		11E8FE3B219E705C00395CE3 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		314A89AEABAD48A8BA38438B /* Pods_iNav_UW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iNav_UW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACED9B12996FF554B9B71903 /* Pods-iNav UW.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNav UW.release.xcconfig"; path = "Pods/Target Support Files/Pods-iNav UW/Pods-iNav UW.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +133,7 @@
 				119E7343218CF65100A8B800 /* Common */,
 				1114CC352190E84900770437 /* Search Page */,
 				119E7342218CF14A00A8B800 /* Main Page */,
+				11E8FE38219E6FFC00395CE3 /* Models */,
 			);
 			path = "iNav UW";
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 		119E733F218CF07D00A8B800 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				11E8FE39219E702100395CE3 /* Locations.json */,
 				119E7322218CDCEE00A8B800 /* Assets.xcassets */,
 				119E7340218CF08B00A8B800 /* Vectors */,
 			);
@@ -188,6 +194,14 @@
 				119E734A218D083C00A8B800 /* Constants.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		11E8FE38219E6FFC00395CE3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				11E8FE3B219E705C00395CE3 /* Locations.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E64E1F44B9C8484DEA38097E /* Frameworks */ = {
@@ -283,6 +297,7 @@
 			files = (
 				119E7326218CDCEE00A8B800 /* LaunchScreen.storyboard in Resources */,
 				119E7323218CDCEE00A8B800 /* Assets.xcassets in Resources */,
+				11E8FE3A219E702100395CE3 /* Locations.json in Resources */,
 				119E733E218CED9900A8B800 /* CAE-2.svg in Resources */,
 				119E7321218CDCED00A8B800 /* Main.storyboard in Resources */,
 				1114CC342190E83F00770437 /* Search.storyboard in Resources */,
@@ -326,11 +341,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-iNav UW/Pods-iNav UW-frameworks.sh",
 				"${PODS_ROOT}/IndoorAtlas/indooratlas-ios-sdk/IndoorAtlas.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IndoorAtlas.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -353,6 +370,7 @@
 				1114CC3E21915E7000770437 /* SearchTableViewCell.swift in Sources */,
 				119E731C218CDCED00A8B800 /* AppDelegate.swift in Sources */,
 				11DDABBF2193EBC800929EE4 /* SectionTitleTableViewCell.swift in Sources */,
+				11E8FE3C219E705C00395CE3 /* Locations.swift in Sources */,
 				119E734D218D0D1500A8B800 /* POICollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
