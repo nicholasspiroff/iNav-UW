@@ -30,6 +30,7 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
         // Initialize properites
         floorPlan = IAFloorPlan()
         floorPlanImageView = UIImageView()
+        floorPlanImageView.isUserInteractionEnabled = true
         locationManager = IALocationManager.sharedInstance()
         locationCircle = UIView()
         accuracyCircle = UIView()
@@ -70,9 +71,9 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
         pinchGestureRecognizer.delegate = self
         rotateGestureRecognizer.delegate = self
         
-        floorPlanImageView.addGestureRecognizer(panGestureRecognizer)
-        floorPlanImageView.addGestureRecognizer(pinchGestureRecognizer)
-        floorPlanImageView.addGestureRecognizer(rotateGestureRecognizer)
+        parentView.addGestureRecognizer(panGestureRecognizer)
+        parentView.addGestureRecognizer(pinchGestureRecognizer)
+        parentView.addGestureRecognizer(rotateGestureRecognizer)
     }
     
     /// Programatically creates circular views for indicating location.
@@ -194,47 +195,20 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
     /// Scales the image and its child views accordingly.
     @objc
     func handlePinch(recognizer: UIPinchGestureRecognizer) {
-        
-        let newWidth = floorPlanImageView.frame.width * recognizer.scale
-        
-        if newWidth >= floorPlanImageView.frame.width && newWidth <= floorPlanImageView.frame.width * 7  {
-            floorPlanImageView.transform =
-                floorPlanImageView.transform.scaledBy(x: recognizer.scale,
-                                                      y: recognizer.scale)
-            
+        floorPlanImageView.transform =
+            floorPlanImageView.transform.scaledBy(x: recognizer.scale,
+                                                  y: recognizer.scale)
             recognizer.scale = 1
-        }
     }
     
     /// Detects when the user performs a pan gesture on the floor plan image.
     /// Moves the image and its child views accordingly.
     @objc
     func handlePan(recognizer: UIPanGestureRecognizer) {
-        
-        let trans = recognizer.translation(in: floorPlanImageView)
-        let newFrame = CGRect(x: floorPlanImageView.frame.origin.x + trans.x,
-                              y: floorPlanImageView.frame.origin.y + trans.y,
-                              width: floorPlanImageView.frame.width,
-                              height: floorPlanImageView.frame.height)
-        
-        var allowedTrans = CGPoint.zero
-        
-        if (trans.x < 0 && newFrame.maxX >= floorPlanImageView.frame.width) ||
-            (trans.x > 0 && newFrame.minX <= 0) {
-            
-            allowedTrans.x = trans.x
-        }
-        
-        if (trans.y < 0 && newFrame.maxY >= floorPlanImageView.frame.height) ||
-            (trans.y > 0 && newFrame.minY <= 0) {
-            
-            allowedTrans.y = trans.y
-        }
-        
-        
-        floorPlanImageView.center = CGPoint(
-            x: floorPlanImageView.center.x + allowedTrans.x,
-            y: floorPlanImageView.center.y + allowedTrans.y
+        floorPlanImageView.transform =
+            floorPlanImageView.transform.translatedBy(
+                x: recognizer.translation(in: floorPlanImageView).x,
+                y: recognizer.translation(in: floorPlanImageView).y
         )
         
         recognizer.setTranslation(CGPoint.zero, in: floorPlanImageView)

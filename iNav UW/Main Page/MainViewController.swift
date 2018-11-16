@@ -36,11 +36,13 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
         addDarkBlurBackground(toView: poiView)
         
         SideMenuManager.default.menuFadeStatusBar = false
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        
         map = Map(parentView: mapView)
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        map = Map(parentView: mapView)
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
