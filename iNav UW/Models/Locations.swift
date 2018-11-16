@@ -61,5 +61,5 @@ class Locations {
             print("Failed to parse \"Locations.json\"")
         }
     }
-    
+    // I hate my life
 }
