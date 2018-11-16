@@ -200,17 +200,18 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="N1M-MA-xq5" id="7i6-vg-mff"/>
+                        <outlet property="dismissKeyGesture" destination="Xpt-1u-yxK" id="aZf-6W-PVx"/>
                         <outlet property="resultsTableView" destination="vsR-M0-EHB" id="yi0-OT-Xe7"/>
                         <outlet property="searchTextField" destination="tY9-cO-F63" id="Scj-6f-DnX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G24-kA-JSn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="HLt-Z8-9bX" userLabel="Back Arrow Tap Gesture">
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="HLt-Z8-9bX" userLabel="Back Arrow Tap Gesture">
                     <connections>
                         <action selector="backButtonPressed:" destination="CtZ-vo-ePa" id="axy-H4-Bly"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="Xpt-1u-yxK" userLabel="Dismiss Keyboard Tap Gesture">
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="Xpt-1u-yxK" userLabel="Dismiss Keyboard Tap Gesture">
                     <connections>
                         <action selector="viewTapped:" destination="CtZ-vo-ePa" id="AHv-0L-WzO"/>
                     </connections>

@@ -56,10 +56,6 @@ class Locations {
                 // Add the item to the list
                 list.append(iNavLocation(name: name, type: roomType, lat: lat, lon: lon, floor: floor))
             }
-            
-            for loc in list {
-                print("\(loc.name)")
-            }
         }
         catch {
             print("Failed to parse \"Locations.json\"")

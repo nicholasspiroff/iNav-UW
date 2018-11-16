@@ -194,5 +194,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
         }
     }
     
+    func wayfindForLocation(_ loc: iNavLocation) {
+        map.wayfindForLocation(loc)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "searchBarPressed" {
+            let dest = segue.destination as! SearchViewController
+            dest.parentVC = self
+        }
+    }
+    
 }
 

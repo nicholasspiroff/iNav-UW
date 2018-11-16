@@ -11,9 +11,14 @@ import UIKit
 class SearchViewController: UIViewController, UITextFieldDelegate,
     UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet var dismissKeyGesture: UITapGestureRecognizer!
     @IBOutlet weak private var searchTextField: UITextField!
     @IBOutlet weak private var resultsTableView: UITableView!
     @IBOutlet private var contentView: UIView!
+    
+    var filteredLocations = [iNavLocation]()
+    var isFiltering = false
+    var parentVC: MainViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +41,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate,
         searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [
             NSAttributedStringKey.foregroundColor: UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
         ])
+        searchTextField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
     }
     
     private func setupTableView() {
@@ -45,6 +51,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate,
         resultsTableView.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         resultsTableView.layer.cornerRadius = 2
         resultsTableView.layer.masksToBounds = true
+        resultsTableView.allowsSelection = true
     }
     
     @IBAction func backButtonPressed(_ sender: UITapGestureRecognizer) {
@@ -61,20 +68,65 @@ class SearchViewController: UIViewController, UITextFieldDelegate,
         return false
     }
     
+    @objc
+    private func textFieldDidChange() {
+        if searchTextField.text == "" {
+            isFiltering = false
+            resultsTableView.reloadData()
+        }
+        else {
+            isFiltering = true
+            filterContent(searchText: searchTextField.text!)
+        }
+    }
+    
+    private func filterContent(searchText: String) {
+        filteredLocations = Locations.list.filter({ (loc: iNavLocation) -> Bool in
+            return loc.name.lowercased().contains(searchText.lowercased())
+        })
+        
+        resultsTableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if isFiltering {
+            return filteredLocations.count + 1
+        }
+        else {
+            return Locations.list.count + 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.item == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sectionLabel", for: indexPath) as! SectionTitleTableViewCell
-            cell.setTitle(to: "Test Header")
+            
+            if isFiltering {
+                cell.setTitle(to: "Results")
+            }
+            else {
+                cell.setTitle(to: "Locations")
+            }
+            
             return cell
         }
         
+        var location: iNavLocation!
+        if isFiltering {
+            location = filteredLocations[indexPath.item - 1]
+        }
+        else {
+            location = Locations.list[indexPath.item - 1]
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
-        cell.setMainTitle(to: "Cell \(indexPath.item)")
-        cell.setSubtitle(to: "Smol Cell \(indexPath.item)")
+        cell.setMainTitle(to: location.name)
+        
+        switch location.type {
+            case .mensBathroom: cell.setSubtitle(to: "Men's Bathroom")
+            case .womensBathroom: cell.setSubtitle(to: "Women's Bathroom")
+            case .room: cell.setSubtitle(to: "Room")
+        }
         
         let index = indexPath.item % 3
         switch index {
@@ -85,6 +137,19 @@ class SearchViewController: UIViewController, UITextFieldDelegate,
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var selectedLocation: iNavLocation!
+        if isFiltering {
+            selectedLocation = filteredLocations[indexPath.item - 1]
+        }
+        else {
+            selectedLocation = Locations.list[indexPath.item - 1]
+        }
+        dismiss(animated: true, completion: {
+            self.parentVC.wayfindForLocation(selectedLocation)
+        })
     }
     
 }

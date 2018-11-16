@@ -46,7 +46,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="lJH-fO-d1g" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="z1A-ba-NQ3"/>
+                                            <segue destination="lJH-fO-d1g" kind="presentation" identifier="searchBarPressed" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="z1A-ba-NQ3"/>
                                         </connections>
                                     </button>
                                 </subviews>

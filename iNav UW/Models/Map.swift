@@ -63,6 +63,7 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
     
     /// Adds panning, zooming and rotation behavior to the map view
     private func setupGestures() {
+        
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(recognizer:)))
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(recognizer:)))
         let rotateGestureRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(handleRotate(recognizer:)))
@@ -229,6 +230,17 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
+    
+    func wayfindForLocation(_ loc: iNavLocation) {
+        let request = IAWayfindingRequest()
+        request.coordinate = CLLocationCoordinate2DMake(loc.lat, loc.lon)
+        request.floor = loc.floor
+        locationManager.startMonitoring(forWayfinding: request)
+    }
+    
+//    func indoorLocationManager(_ manager: IALocationManager, didUpdate route: IARoute) {
+//        <#code#>
+//    }
     
 }
 
