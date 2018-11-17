@@ -55,6 +55,10 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
         locationManager.delegate = nil
         floorPlanImageView.image = nil
     }
+    //Joe Added for Testing, Returns reference to locationManager
+    func getLocationManager() -> IALocationManager {
+        return locationManager
+    }
     
     /// Returns a reference to the map's view.
     func getMapView() -> UIImageView {

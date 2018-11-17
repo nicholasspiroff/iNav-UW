@@ -23,14 +23,23 @@ struct iNavLocation {
     var floor: Int
 }
 
+
 class Locations {
     
-    static var list = [iNavLocation]()
-    
-    static func initialize() {
+//  static  func getFailed()-> Bool{
+//        return failed;
+//    }
+   static    var failed = false
+   static  var list = [iNavLocation]()
+    static func initialize(json: String) {
         do {
             // Load data from the Location.json file
-            let jsonFilePath = Bundle.main.path(forResource: "Locations", ofType: "json")!
+            if(json != "json"){
+                try(objc_exception_throw("fsdfsfs"))
+                failed = true;
+            }
+            
+            let jsonFilePath = Bundle.main.path(forResource: "Locations", ofType: json)!
             let jsonData = try String(contentsOfFile: jsonFilePath).data(using: .utf8, allowLossyConversion: false)!
             let json = try JSON(data: jsonData)
             
@@ -58,6 +67,7 @@ class Locations {
             }
         }
         catch {
+            failed = true;
             print("Failed to parse \"Locations.json\"")
         }
     }
