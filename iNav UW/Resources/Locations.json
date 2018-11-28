@@ -225,13 +225,6 @@
 			"floor" : 2
 		},
 		{
-			"name" : "Room 294",
-			"class" : "room",
-			"latitude" : 43.07248396,
-			"longitude" : -89.40959858,
-			"floor" : 2
-		},
-		{
 			"name" : "Room 225B",
 			"class" : "room",
 			"latitude" : 43.07246908,

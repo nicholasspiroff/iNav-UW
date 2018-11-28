@@ -17,6 +17,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate,
     @IBOutlet private var contentView: UIView!
     
     var filteredLocations = [iNavLocation]()
+    var filteredStringRanges = [Range<String.Index>]()
     var isFiltering = false
     var parentVC: MainViewController!
     
@@ -81,8 +82,15 @@ class SearchViewController: UIViewController, UITextFieldDelegate,
     }
     
     private func filterContent(searchText: String) {
+        filteredStringRanges.removeAll()
+        
         filteredLocations = Locations.list.filter({ (loc: iNavLocation) -> Bool in
-            return loc.name.lowercased().contains(searchText.lowercased())
+            if let range = loc.name.lowercased().range(of: searchText.lowercased()) {
+                filteredStringRanges.append(range)
+                return true
+            }
+            
+            return false
         })
         
         resultsTableView.reloadData()
@@ -122,17 +130,28 @@ class SearchViewController: UIViewController, UITextFieldDelegate,
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! SearchTableViewCell
         cell.setMainTitle(to: location.name)
         
-        switch location.type {
-            case .mensBathroom: cell.setSubtitle(to: "Men's Bathroom")
-            case .womensBathroom: cell.setSubtitle(to: "Women's Bathroom")
-            case .room: cell.setSubtitle(to: "Room")
+        if isFiltering {
+            cell.filterTitle(withRange: filteredStringRanges[indexPath.item - 1])
+        }
+        
+        if location.type == .room {
+            cell.setSubtitle(to: "Room")
+            cell.setIcon(to: #imageLiteral(resourceName: "room"))
+        }
+        else if location.type == .mensBathroom {
+            cell.setSubtitle(to: "Men's Bathroom")
+            cell.setIcon(to: #imageLiteral(resourceName: "mensBthrm"))
+        }
+        else if location.type == .womensBathroom {
+            cell.setSubtitle(to: "Women's Bathroom")
+            cell.setIcon(to: #imageLiteral(resourceName: "womenBthrm"))
         }
         
         let index = indexPath.item % 3
         switch index {
             case 0: cell.setCircleColor(to: Constants.uwLightRed)
-            case 1: cell.setCircleColor(to: Constants.uwOffWhite)
-            case 2: cell.setCircleColor(to: Constants.uwDarkRed)
+            case 1: cell.setCircleColor(to: Constants.uwDarkRed)
+            case 2: cell.setCircleColor(to: Constants.uwOffWhite)
             default: cell.setCircleColor(to: .green)
         }
         
@@ -141,13 +160,16 @@ class SearchViewController: UIViewController, UITextFieldDelegate,
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var selectedLocation: iNavLocation!
+        
         if isFiltering {
             selectedLocation = filteredLocations[indexPath.item - 1]
         }
         else {
             selectedLocation = Locations.list[indexPath.item - 1]
         }
+        
         dismiss(animated: true, completion: {
+            self.parentVC.map.followUser = true
             self.parentVC.wayfindForLocation(selectedLocation)
         })
     }

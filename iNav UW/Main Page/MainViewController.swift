@@ -21,7 +21,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak private var rightArrow: UIButton!
     
     // Example data for points of interest collection view
-    let pois = ["Bathrooms", "Water Fountains", "Libraries", "Offices", "Test 1", "Test 2", "Test 3", "Test 4"]
+    let pois = ["Bathrooms", "Bubblers", "Elevators", "Exits"]
+    let icons = [#imageLiteral(resourceName: "bathrooms"), #imageLiteral(resourceName: "bubbler"), #imageLiteral(resourceName: "elevator"), #imageLiteral(resourceName: "exit")]
     
     var map: Map!
     
@@ -141,6 +142,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate,
         // Initialize a POICollectionViewCell instance
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "poiCell", for: indexPath) as! POICollectionViewCell
         cell.setTitle(to: pois[indexPath.item])
+        cell.setIcon(to: icons[indexPath.item])
         
         // Change the background color for every set of 3 collection view cells
         let index = indexPath.item % 3

@@ -15,7 +15,12 @@ protocol MapDelegate: AnyObject {
 
 class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
     
-    weak var delegate:MapDelegate?                  // Optional delgate for Map objects
+    var followUser: Bool = false                    // Should the map zoom/follow the user as they move?
+    
+    weak var delegate: MapDelegate?                 // Optional delgate for Map objects
+    private var currLoc: IALocation?                // The user's current location
+    private var originalScale: CGFloat!             // The floor plan's original scale
+    private var shapeLayer: CAShapeLayer!           // The shape layer for drawing routes
     
     private var floorPlan: IAFloorPlan              // IndoorAtlas floorplan
     private var floorPlanImageView: UIImageView     // The floorplan image
@@ -44,6 +49,9 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
         
         // Setup the location indicator
         setupLocationCircle()
+        
+        // Setup shape layer
+        setupShapeLayer()
         
         // Start requesting location updates
         requestLocation()
@@ -111,9 +119,10 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
         
         // Convert current location to IALocation
         let iALoc = locations.last as! IALocation
+        currLoc = iALoc
         
         // Translate current location to a point on the floor plan image
-        let point = floorPlan.coordinate(toPoint: (iALoc.location?.coordinate)!)
+        let point = convertIALocationToPoint(iALoc)
         
         // Calculate the accuracy of the location
         guard let accuracy = iALoc.location?.horizontalAccuracy else { return }
@@ -138,6 +147,20 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
                 y: CGFloat(accuracySize)
             )
         })
+        
+//        if followUser {
+//            let center = parentView.convert(Constants.centerOfScreen, to: floorPlanImageView)
+//
+//            let differenceFromCenter = CGPoint(
+//                x: center.x - locationCircle.center.x,
+//                y: center.y - locationCircle.center.y
+//            )
+//
+//            self.floorPlanImageView.transform =
+//                self.floorPlanImageView.transform.translatedBy(
+//                    x: differenceFromCenter.x, y: differenceFromCenter.y)
+//
+//        }
     }
     
     /// Delegate method from IALocationManagerDelegate.
@@ -170,8 +193,8 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
                 let image = UIImage.init(data: imageData!)!
                 
                 // Setup and scale the floorplan image to the screen
-                let scale = fmin(1.0, fmin(self.parentView.bounds.size.width / CGFloat((floorplan.width)), self.parentView.bounds.size.height / CGFloat((floorplan.height))))
-                let trans = CGAffineTransform(scaleX: scale, y: scale)
+                self.originalScale = fmin(1.0, fmin(self.parentView.bounds.size.width / CGFloat((floorplan.width)), self.parentView.bounds.size.height / CGFloat((floorplan.height))))
+                let trans = CGAffineTransform(scaleX: self.originalScale, y: self.originalScale)
                 self.floorPlanImageView.transform = CGAffineTransform.identity
                 self.floorPlanImageView.image = image
                 self.floorPlanImageView.frame = CGRect(x: 0, y: 0, width: CGFloat((floorplan.width)), height: CGFloat((floorplan.height)))
@@ -242,9 +265,53 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
         locationManager.startMonitoring(forWayfinding: request)
     }
     
-//    func indoorLocationManager(_ manager: IALocationManager, didUpdate route: IARoute) {
-//        <#code#>
-//    }
+    func indoorLocationManager(_ manager: IALocationManager, didUpdate route: IARoute) {
+        
+        // Check if a current location exists, otherwise return
+        guard let currentLocation = currLoc else { return }
+        
+        // Initialize a Bezier path with a starting point at the user's current location
+        let path = UIBezierPath()
+        path.move(to: convertIALocationToPoint(currentLocation))
+        
+        // Add lines for each point in the route
+        for leg in route.legs {
+            path.addLine(to: converCoordToPoint(leg.begin.coordinate))
+        }
+        path.addLine(to: converCoordToPoint(route.legs.last!.end.coordinate))
+        
+        // Create the shape layer for the path to be drawn on
+        shapeLayer.path = path.cgPath
+    }
     
+    /// Converts an Indoor Atlas location to a point on the floor plan
+    private func convertIALocationToPoint(_ iALoc: IALocation) -> CGPoint {
+        return floorPlan.coordinate(toPoint: (iALoc.location?.coordinate)!)
+    }
+    
+    /// Converts a geographical location to a point on the floor plan
+    private func converCoordToPoint(_ coord: CLLocationCoordinate2D) -> CGPoint {
+        return floorPlan.coordinate(toPoint: coord)
+    }
+    
+    /// Sets the basic properties of the routing shape layer
+    private func setupShapeLayer() {
+        shapeLayer = CAShapeLayer()
+        shapeLayer.strokeColor = UIColor.blue.cgColor
+        shapeLayer.lineWidth = 40.0
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        floorPlanImageView.layer.addSublayer(shapeLayer)
+    }
+    
+    func zoomIn() {
+        floorPlanImageView.transform = CGAffineTransform.identity
+        
+        floorPlanImageView.transform =
+            floorPlanImageView.transform.scaledBy(
+                x: originalScale * 2.5,
+                y: originalScale * 2.5
+        )
+    }
+
 }
 

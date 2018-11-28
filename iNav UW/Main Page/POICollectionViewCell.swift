@@ -13,6 +13,10 @@ class POICollectionViewCell: UICollectionViewCell {
     @IBOutlet weak private var circleView: UIView!
     @IBOutlet weak private var title: UILabel!
     @IBOutlet weak private var iconView: UIImageView!
+    @IBOutlet weak private var iconWidth: NSLayoutConstraint!
+    @IBOutlet weak private var iconHeight: NSLayoutConstraint!
+    
+    let sqrt2 = sqrt(2)
     
     override func draw(_ rect: CGRect) {
         circleView.layer.masksToBounds = true
@@ -23,14 +27,12 @@ class POICollectionViewCell: UICollectionViewCell {
         self.title.text = title
     }
     
-    func setIcon(toImageNamed imageName: String) {
-        if let image = UIImage(named: imageName) {
-            iconView.image = image
-        }
-        else {
-            let placeholder = "no title"
-            print("Failed to load image for POI cell: \(title.text ?? placeholder)")
-        }
+    func setIcon(to image: UIImage) {
+        let sideLength = (circleView.frame.width / 2) / CGFloat(sqrt2)
+        iconWidth.constant = sideLength
+        iconHeight.constant = sideLength
+        
+        iconView.image = image
     }
     
     func setBackgroundColor(to color: UIColor) {
