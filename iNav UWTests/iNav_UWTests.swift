@@ -22,29 +22,21 @@ class iNav_UWTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-//    func testMapCanClose(){
-//         weak  var mapView: UIView!
-//        var map = Map(parentView: mapView)
-//           map.close()
-//     //   XCTAssertEqual(map.getLocationManager().delegate, nil,
-//     //       "\(map.getLocationManager().delegate) should be: nil")
-//        XCTAssertEqual(map.getMapView(),nil, "\(map.getMapView()) should be: nil")
-//        //locationManager.stopUpdatingLocation()
-//    //    locationManager.delegate = nil
-//    //    floorPlanImageView.image = nil
-//    }
+
     func testLocationsFails(){
-        Locations.initialize(json: "js")
+        Locations.initialize(fileExtension: "js")
         XCTAssertFalse(Locations.list.count != 0  ,"json: name is js, should be json")
     }
+    
     func testArrayHasAValue() {
-           Locations.initialize(json: "json")
+           Locations.initialize(fileExtension: "json")
         XCTAssert(Locations.list.count != 0, "the array should not contain zero elements" )
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
     func testFirstElementIsCorrect(){
-           Locations.initialize(json: "json")
+           Locations.initialize(fileExtension: "json")
         XCTAssertEqual(Locations.list[0].name, "Room 294", "\(Locations.list[0].name) should be: Room 294")
         XCTAssertEqual(Locations.list[0].floor, 2, "\(Locations.list[0].floor) should be: 2")
         XCTAssertEqual(Locations.list[0].lat, 43.072616, "\(Locations.list[0].lat) should be: 43.072616")
@@ -52,11 +44,102 @@ class iNav_UWTests: XCTestCase {
         XCTAssertEqual(Locations.list[0].type, .room, "\(Locations.list[0].type) should be: .room")
     }
     
-//    func testPerformanceExample() {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
+    func testSignUpWithBlankInput(){
+        let vc = LoginViewController();
+        let email = "";
+        let password = "";
+        
+        XCTAssert(!vc.doUserSignUp(email: email, pass: password))
+    }
     
+    func testSignUpWithInvalidEmail(){
+        let vc = LoginViewController();
+        
+        let email = "test";
+        let password = "testpassword";
+        
+        XCTAssert(!vc.doUserSignUp(email: email, pass: password))
+    }
+    
+    func testSignUpWithInvalidPassword(){
+        let vc = LoginViewController();
+        let email = "test@gmail.com";
+        let password = "test";
+        
+        XCTAssert(!vc.doUserSignUp(email: email, pass: password))
+    }
+    
+    func testSignUpWithBlankEmail(){
+        let vc = LoginViewController();
+        let email = "";
+        let password = "testpassword";
+        
+        XCTAssert(!vc.doUserSignUp(email: email, pass: password))
+    }
+    
+    func testSignUpWithBlankPassword(){
+        let vc = LoginViewController();
+        let email = "test@gmail.com";
+        let password = "";
+        
+        XCTAssert(!vc.doUserSignUp(email: email, pass: password))
+    }
+    
+    func testSignUpWithValidInput(){
+        let vc = LoginViewController();
+        let email = "test@gmail.com";
+        let password = "testpassword";
+        
+        XCTAssert(vc.doUserSignUp(email: email, pass: password))
+    }
+    
+    func testLoginWithBlankInput(){
+        let vc = LoginViewController();
+        let email = "";
+        let password = "";
+        
+        XCTAssert(!vc.doUserLogin(email: email, pass: password))
+    }
+    
+    func testLoginWithInvalidEmail(){
+        let vc = LoginViewController();
+        
+        let email = "test";
+        let password = "testpassword";
+        
+        XCTAssert(!vc.doUserLogin(email: email, pass: password))
+    }
+    
+    func testLoginWithInvalidPassword(){
+        let vc = LoginViewController();
+        let email = "test@gmail.com";
+        let password = "test";
+        
+        XCTAssert(!vc.doUserLogin(email: email, pass: password))
+    }
+    
+    func testLoginWithBlankEmail(){
+        let vc = LoginViewController();
+        let email = "";
+        let password = "testpassword";
+        
+        XCTAssert(!vc.doUserLogin(email: email, pass: password))
+    }
+    
+    func testLoginWithBlankPassword(){
+        let vc = LoginViewController();
+        let email = "test@gmail.com";
+        let password = "";
+        
+        XCTAssert(!vc.doUserLogin(email: email, pass: password))
+    }
+    
+    func testLoginWithValidInput(){
+        let vc = LoginViewController();
+        let email = "test@gmail.com";
+        let password = "testpassword";
+        vc.doUserSignUp(email: email, pass: password)
+        
+        XCTAssert(vc.doUserLogin(email: email, pass: password))
+    }
 }

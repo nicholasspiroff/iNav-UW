@@ -10,6 +10,9 @@
 		1114CC342190E83F00770437 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1114CC322190E83F00770437 /* Search.storyboard */; };
 		1114CC372190E87200770437 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1114CC362190E87200770437 /* SearchViewController.swift */; };
 		1114CC3E21915E7000770437 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1114CC3D21915E7000770437 /* SearchTableViewCell.swift */; };
+		11382FA021AF1EBE00271806 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11382F9F21AF1EBE00271806 /* GoogleService-Info.plist */; };
+		11382FA321AF200E00271806 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11382FA221AF200E00271806 /* Login.storyboard */; };
+		11382FA521AF24F200271806 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11382FA421AF24F200271806 /* LoginViewController.swift */; };
 		11818E412192A27C00DA1AA2 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11818E402192A27C00DA1AA2 /* ApiKeys.swift */; };
 		119E731C218CDCED00A8B800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E731B218CDCED00A8B800 /* AppDelegate.swift */; };
 		119E731E218CDCED00A8B800 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119E731D218CDCED00A8B800 /* MainViewController.swift */; };
@@ -25,6 +28,7 @@
 		11DDABBF2193EBC800929EE4 /* SectionTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DDABBE2193EBC800929EE4 /* SectionTitleTableViewCell.swift */; };
 		11E8FE3A219E702100395CE3 /* Locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 11E8FE39219E702100395CE3 /* Locations.json */; };
 		11E8FE3C219E705C00395CE3 /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E8FE3B219E705C00395CE3 /* Locations.swift */; };
+		6CE688204101A6FEE9D08E09 /* Pods_iNav_UWTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 489F695D62D2E2EFAE95B000 /* Pods_iNav_UWTests.framework */; };
 		B55F4B4BD77D6E65162E036E /* Pods_iNav_UW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 314A89AEABAD48A8BA38438B /* Pods_iNav_UW.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +47,9 @@
 		1114CC332190E83F00770437 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "iNav UW/Main Page/Base.lproj/Search.storyboard"; sourceTree = "<group>"; };
 		1114CC362190E87200770437 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1114CC3D21915E7000770437 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		11382F9F21AF1EBE00271806 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		11382FA221AF200E00271806 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		11382FA421AF24F200271806 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		11818E402192A27C00DA1AA2 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		119E7318218CDCED00A8B800 /* iNav UW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iNav UW.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		119E731B218CDCED00A8B800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +70,10 @@
 		11E8FE39219E702100395CE3 /* Locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Locations.json; sourceTree = "<group>"; };
 		11E8FE3B219E705C00395CE3 /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 		314A89AEABAD48A8BA38438B /* Pods_iNav_UW.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iNav_UW.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		489F695D62D2E2EFAE95B000 /* Pods_iNav_UWTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iNav_UWTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACED9B12996FF554B9B71903 /* Pods-iNav UW.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNav UW.release.xcconfig"; path = "Pods/Target Support Files/Pods-iNav UW/Pods-iNav UW.release.xcconfig"; sourceTree = "<group>"; };
+		CEE091F87A33FAF08C2EB0EC /* Pods-iNav UWTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNav UWTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iNav UWTests/Pods-iNav UWTests.release.xcconfig"; sourceTree = "<group>"; };
+		E9220097C6D704447DDEA9B4 /* Pods-iNav UWTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iNav UWTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iNav UWTests/Pods-iNav UWTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CE688204101A6FEE9D08E09 /* Pods_iNav_UWTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +101,8 @@
 			children = (
 				0CADD5EF709001E1B41DE019 /* Pods-iNav UW.debug.xcconfig */,
 				ACED9B12996FF554B9B71903 /* Pods-iNav UW.release.xcconfig */,
+				E9220097C6D704447DDEA9B4 /* Pods-iNav UWTests.debug.xcconfig */,
+				CEE091F87A33FAF08C2EB0EC /* Pods-iNav UWTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -103,6 +116,15 @@
 				11DDABBE2193EBC800929EE4 /* SectionTitleTableViewCell.swift */,
 			);
 			path = "Search Page";
+			sourceTree = "<group>";
+		};
+		11382FA121AF1F2700271806 /* Login Page */ = {
+			isa = PBXGroup;
+			children = (
+				11382FA221AF200E00271806 /* Login.storyboard */,
+				11382FA421AF24F200271806 /* LoginViewController.swift */,
+			);
+			path = "Login Page";
 			sourceTree = "<group>";
 		};
 		119E730F218CDCED00A8B800 = {
@@ -128,9 +150,11 @@
 		119E731A218CDCED00A8B800 /* iNav UW */ = {
 			isa = PBXGroup;
 			children = (
+				11382F9F21AF1EBE00271806 /* GoogleService-Info.plist */,
 				119E733F218CF07D00A8B800 /* Resources */,
 				119E7341218CF0A400A8B800 /* Support Files */,
 				119E7343218CF65100A8B800 /* Common */,
+				11382FA121AF1F2700271806 /* Login Page */,
 				1114CC352190E84900770437 /* Search Page */,
 				119E7342218CF14A00A8B800 /* Main Page */,
 				11E8FE38219E6FFC00395CE3 /* Models */,
@@ -200,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				314A89AEABAD48A8BA38438B /* Pods_iNav_UW.framework */,
+				489F695D62D2E2EFAE95B000 /* Pods_iNav_UWTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -230,9 +255,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 119E7338218CDCEE00A8B800 /* Build configuration list for PBXNativeTarget "iNav UWTests" */;
 			buildPhases = (
+				2B78487794D6F337801117E5 /* [CP] Check Pods Manifest.lock */,
 				119E7328218CDCEE00A8B800 /* Sources */,
 				119E7329218CDCEE00A8B800 /* Frameworks */,
 				119E732A218CDCEE00A8B800 /* Resources */,
+				544A71D1471BDE5AA768278B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -289,9 +316,11 @@
 			files = (
 				119E7326218CDCEE00A8B800 /* LaunchScreen.storyboard in Resources */,
 				119E7323218CDCEE00A8B800 /* Assets.xcassets in Resources */,
+				11382FA321AF200E00271806 /* Login.storyboard in Resources */,
 				11E8FE3A219E702100395CE3 /* Locations.json in Resources */,
 				119E7321218CDCED00A8B800 /* Main.storyboard in Resources */,
 				1114CC342190E83F00770437 /* Search.storyboard in Resources */,
+				11382FA021AF1EBE00271806 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +334,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2B78487794D6F337801117E5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iNav UWTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		544A71D1471BDE5AA768278B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iNav UWTests/Pods-iNav UWTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iNav UWTests/Pods-iNav UWTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		78F3A3C658CB51D414D3CCF4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -330,15 +397,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iNav UW/Pods-iNav UW-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${PODS_ROOT}/IndoorAtlas/indooratlas-ios-sdk/IndoorAtlas.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IndoorAtlas.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -363,6 +436,7 @@
 				11DDABBF2193EBC800929EE4 /* SectionTitleTableViewCell.swift in Sources */,
 				11E8FE3C219E705C00395CE3 /* Locations.swift in Sources */,
 				11C88877219F30DE00D9A962 /* Map.swift in Sources */,
+				11382FA521AF24F200271806 /* LoginViewController.swift in Sources */,
 				119E734D218D0D1500A8B800 /* POICollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,6 +643,7 @@
 		};
 		119E7339218CDCEE00A8B800 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9220097C6D704447DDEA9B4 /* Pods-iNav UWTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -590,6 +665,7 @@
 		};
 		119E733A218CDCEE00A8B800 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CEE091F87A33FAF08C2EB0EC /* Pods-iNav UWTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

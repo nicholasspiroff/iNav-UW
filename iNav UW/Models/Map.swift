@@ -20,7 +20,8 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
     weak var delegate: MapDelegate?                 // Optional delgate for Map objects
     private var currLoc: IALocation?                // The user's current location
     private var originalScale: CGFloat!             // The floor plan's original scale
-    private var shapeLayer: CAShapeLayer!           // The shape layer for drawing routes
+    private var upperShapeLayer: CAShapeLayer!      // The upper shape layer for drawing routes
+    private var lowerShapeLayer: CAShapeLayer!      // The lower shape layer for drawing routes
     
     private var floorPlan: IAFloorPlan              // IndoorAtlas floorplan
     private var floorPlanImageView: UIImageView     // The floorplan image
@@ -51,7 +52,7 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
         setupLocationCircle()
         
         // Setup shape layer
-        setupShapeLayer()
+        setupShapeLayers()
         
         // Start requesting location updates
         requestLocation()
@@ -281,7 +282,8 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
         path.addLine(to: converCoordToPoint(route.legs.last!.end.coordinate))
         
         // Create the shape layer for the path to be drawn on
-        shapeLayer.path = path.cgPath
+        upperShapeLayer.path = path.cgPath
+        lowerShapeLayer.path = path.cgPath
     }
     
     /// Converts an Indoor Atlas location to a point on the floor plan
@@ -295,12 +297,18 @@ class Map: NSObject, IALocationManagerDelegate, UIGestureRecognizerDelegate {
     }
     
     /// Sets the basic properties of the routing shape layer
-    private func setupShapeLayer() {
-        shapeLayer = CAShapeLayer()
-        shapeLayer.strokeColor = UIColor.blue.cgColor
-        shapeLayer.lineWidth = 40.0
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        floorPlanImageView.layer.addSublayer(shapeLayer)
+    private func setupShapeLayers() {
+        lowerShapeLayer = CAShapeLayer()
+        lowerShapeLayer.strokeColor = UIColor(red: 2/255, green: 69/255, blue: 145/255, alpha: 1).cgColor
+        lowerShapeLayer.lineWidth = 55.0
+        lowerShapeLayer.fillColor = UIColor.clear.cgColor
+        floorPlanImageView.layer.addSublayer(lowerShapeLayer)
+        
+        upperShapeLayer = CAShapeLayer()
+        upperShapeLayer.strokeColor = UIColor(red: 2/255, green: 97/255, blue: 206/255, alpha: 1).cgColor
+        upperShapeLayer.lineWidth = 40.0
+        upperShapeLayer.fillColor = UIColor.clear.cgColor
+        floorPlanImageView.layer.addSublayer(upperShapeLayer)
     }
     
     func zoomIn() {
