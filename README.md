@@ -18,6 +18,9 @@ $ pod install
 * Open the "iNav UW.xcworkspace" file to build the app on either the XCode Simulator or your physcial device
 * NOTE: For the app's wayfinding and positioning features to work, you must install to a physical device and run in the mapped region, the second floor of [1410 Engineering Dr, Madison, WI, 53706](https://www.google.com/maps/place/1410+Engineering+Dr,+Madison,+WI+53706/data=!4m2!3m1!1s0x8807acc6682f240d:0x99fc566a0bbbd155?ved=2ahUKEwj59Nj0o_3eAhVB6oMKHYdQCiEQ8gEwAHoECAAQAQ). This is due to limitations in location spoofing and the fact that our SDK of choice is not open source.
 
+### Bug Tracking
+Bugs are tracked using GitHub's built-in [Issue Tracker](https://blog.github.com/2009-04-15-github-issue-tracker/).
+
 ### Credits
 Developed by:
 * Nick Spiroff
