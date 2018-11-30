@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
+        setupFirebase()
         authenticateIALocationManager()
         Locations.initialize(fileExtension: "json")
         return true
@@ -51,6 +51,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Set IndoorAtlas API key and secret
         manager.setApiKey(kAPIKey, andSecret: kAPISecret)
+    }
+    
+    private func setupFirebase() {
+        FirebaseApp.configure()
+        
+//        guard let window = self.window else { return }
+//        
+//        if Auth.auth().currentUser != nil {
+//            window.rootViewController = MainViewController()
+//        } else {
+//            window.rootViewController = LoginViewController()
+//        }
     }
 }
 
