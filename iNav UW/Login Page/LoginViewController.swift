@@ -40,19 +40,9 @@ class LoginViewController: UIViewController {
         // Check if the input is valid.
         if let email = emailTextField.text, let pass = passwordTextField.text {
             if loggingIn {
-                if doUserLogin(email: email, pass: pass) {
-                    performSegue(withIdentifier: "Enter", sender: nil)
-                }
-                else {
-                    print("Login failed")
-                }
+                doUserLogin(email: email, pass: pass)
             } else {
-                if doUserSignUp(email: email, pass: pass) {
-                    performSegue(withIdentifier: "Enter", sender: nil)
-                }
-                else {
-                    print("Signup failed")
-                }
+                doUserSignUp(email: email, pass: pass)
             }
         }
     }
@@ -62,39 +52,33 @@ class LoginViewController: UIViewController {
         passwordTextField.resignFirstResponder()
     }
     
-    func doUserSignUp(email : String, pass: String) -> Bool{
-        var success = false
-        
+    func doUserSignUp(email : String, pass: String) {
         if (pass.count > 6 && email.count != 0 && email.range(of: "@") != nil){
             // if isSignIn {
             Auth.auth().createUser(withEmail: email, password: pass, completion: { (user, error) in
                 if error == nil && user != nil {
                     print("User Created!")
-                    success = true
+                    self.performSegue(withIdentifier: "Enter", sender: nil)
                 } else {
                     // Error.
                     print("Error creating user: \(error!.localizedDescription)")
                 }
             })
         }
-        return success
     }
     
-    func doUserLogin(email: String, pass: String) -> Bool {
-        var success = false
-        
+    func doUserLogin(email: String, pass: String) {
         if (pass.count > 6 && email.count != 0 && email.range(of: "@") != nil) {
             
             Auth.auth().signIn(withEmail: email, password: pass, completion: { (user, error) in
                 if error == nil && user != nil {
                     print("Logged In!")
-                    success = true
+                    self.performSegue(withIdentifier: "Enter", sender: nil)
                 } else {
                     // Error.
                     print("Error Logging in: \(error!.localizedDescription)")
                 }
             })
         }
-        return success
     }
 }
