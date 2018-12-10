@@ -46,6 +46,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate,
     }
     
     private func setupTableView() {
+        resultsTableView.tableFooterView = UIView()
         resultsTableView.delegate = self
         resultsTableView.dataSource = self
         resultsTableView.layer.borderWidth = 1
@@ -79,6 +80,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate,
             isFiltering = true
             filterContent(searchText: searchTextField.text!)
         }
+        resultsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
     
     private func filterContent(searchText: String) {
