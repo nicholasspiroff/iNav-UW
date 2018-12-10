@@ -68,5 +68,12 @@ class Locations {
             failed = true;
             print("Failed to parse \"Locations.json\"")
         }
+        
+        list.sort { (locA, locB) -> Bool in
+            if locA.name.lowercased() > locB.name.lowercased() {
+                return false
+            }
+            return true
+        }
     }
 }

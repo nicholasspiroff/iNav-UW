@@ -55,14 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupFirebase() {
         FirebaseApp.configure()
-        
-//        guard let window = self.window else { return }
-//        
-//        if Auth.auth().currentUser != nil {
-//            window.rootViewController = MainViewController()
-//        } else {
-//            window.rootViewController = LoginViewController()
-//        }
     }
 }
 
